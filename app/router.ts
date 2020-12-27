@@ -4,5 +4,5 @@ export default (app: Application) => {
   const { controller, router } = app;
 
   router.get('/', controller.home.index);
-  router.get('/banner', controller.home.banner);
+  router.get('/banner', controller.home.getBanner);
 };
