@@ -2,17 +2,20 @@ import { Service } from 'egg';
 
 export default class PhotoService extends Service {
   public async findBanner() {
-    const banner = await this.app.mysql.select('banner');
+    const { app } = this;
+    const banner = await app.model.Banner.findAll();
     return banner;
   }
 
   public async findGalleryPhotos(id: number) {
-    const photos = await this.app.mysql.get('gallery_photos', { id });
+    const { app } = this;
+    const photos = await app.model.Photo.findAll({ where: { gallery_id: id } });
     return photos;
   }
 
   public async fetchGalleryList() {
-    const gallerys = await this.app.mysql.select('gallery');
+    const { app } = this;
+    const gallerys = await app.model.Gallery.findAll();
     return gallerys;
   }
 }

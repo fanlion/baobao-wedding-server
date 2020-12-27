@@ -2,7 +2,7 @@
  * @Author: fan.li
  * @Date: 2020-12-27 15:00:37
  * @Last Modified by: fan.li
- * @Last Modified time: 2020-12-27 17:35:50
+ * @Last Modified time: 2020-12-27 21:04:28
  *
  * BaseController
  */
@@ -21,10 +21,11 @@ const deepConversion = (data: any) => {
   if (_.isArray(data)) {
     result = [];
     data.forEach((item, i) => {
-      if (_.isPlainObject(item)) {
+      const _data = item.dataValues || item;
+      if (_.isObject(_data)) {
         result[i] = {};
-        for (const [key, value] of Object.entries(item)) {
-          if ((_.isArray(value) && value.length) || _.isPlainObject(value)) {
+        for (const [key, value] of Object.entries(_data)) {
+          if ((_.isArray(value) && value.length) || _.isObject(value)) {
             result[i][_.camelCase(key)] = deepConversion(value);
           } else {
             result[i][_.camelCase(key)] = value;
@@ -35,9 +36,10 @@ const deepConversion = (data: any) => {
       }
     });
   } else if (_.isPlainObject(data)) {
+    const _data = data.dataValues || data;
     result = {};
-    for (const [key, value] of Object.entries(data)) {
-      if ((_.isArray(value) && value.length) || _.isPlainObject(value)) {
+    for (const [key, value] of Object.entries(_data)) {
+      if ((_.isArray(value) && value.length) || _.isObject(value)) {
         result[_.camelCase(key)] = deepConversion(value);
       } else {
         result[_.camelCase(key)] = value;

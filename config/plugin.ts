@@ -1,9 +1,14 @@
 import { EggPlugin } from 'egg';
 
 const plugin: EggPlugin = {
-  mysql: {
+  sequelize: {
     enable: true,
-    package: 'egg-mysql',
+    package: 'egg-sequelize',
+  },
+
+  validate: {
+    enable: true,
+    package: 'egg-validate',
   },
 };
 

@@ -8,16 +8,32 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1608302381111_6826';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
 
-  // add your special config in here
-  const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  config.sequelize = {
+    dialect: 'mysql',
+    username: 'random',
+    password: 'robot',
+    database: 'wedding',
+    host: '127.0.0.1',
+    timezone: '+08:00',
+    define: {
+      timestamps: false,
+      freezeTableName: true,
+      underscored: false,
+    },
+  };
+
+  config.validate = {
+    validateRoot: true,
+  };
+
+  config.multipart = {
+    mode: 'file',
   };
 
   // the return config will combines to EggAppConfig
   return {
     ...config,
-    ...bizConfig,
   };
 };
