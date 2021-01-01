@@ -6,6 +6,11 @@ const plugin: EggPlugin = {
     package: 'egg-sequelize',
   },
 
+  redis: {
+    enable: true,
+    package: 'egg-redis',
+  },
+
   validate: {
     enable: true,
     package: 'egg-validate',

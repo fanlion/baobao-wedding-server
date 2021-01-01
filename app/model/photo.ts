@@ -2,7 +2,7 @@
  * @Author: fan.li
  * @Date: 2020-12-27 20:31:32
  * @Last Modified by: fan.li
- * @Last Modified time: 2020-12-27 20:42:09
+ * @Last Modified time: 2020-12-27 22:37:02
  */
 import { Application } from 'egg';
 
@@ -15,26 +15,30 @@ export default function (app: Application) {
       primaryKey: true,
       autoIncrement: true,
     },
-    gallery_id: {
+    galleryId: {
       type: INTEGER,
       allowNull: false,
+      field: 'gallery_id',
     },
-    img_url: {
+    imgUrl: {
       type: STRING,
       allowNull: false,
+      field: 'img_url',
     },
     desc: {
       type: STRING,
       allowNull: true,
       defaultValue: '',
     },
-    create_time: {
+    createTime: {
       type: BIGINT,
       allowNull: false,
+      field: 'create_time',
     },
-    update_time: {
+    updateTime: {
       type: BIGINT,
       allowNull: false,
+      field: 'update_time',
     },
   });
 
@@ -45,7 +49,7 @@ export default function (app: Application) {
       app.model.Photo.belongsTo(app.model.Gallery, {
         foreignKey: 'gallery_id',
         targetKey: 'id',
-        as: 'p',
+        as: 'photo',
       });
     }
   };

@@ -2,7 +2,7 @@
  * @Author: fan.li
  * @Date: 2020-12-27 20:24:22
  * @Last Modified by: fan.li
- * @Last Modified time: 2020-12-27 20:30:53
+ * @Last Modified time: 2020-12-27 22:35:54
  */
 
 import { Application } from 'egg';
@@ -24,17 +24,20 @@ export default function (app: Application) {
       type: STRING(45),
       allowNull: true,
     },
-    img_url: {
+    imgUrl: {
       type: STRING(255),
       allowNull: true,
+      field: 'img_url',
     },
-    create_time: {
+    createTime: {
       type: BIGINT,
       allowNull: false,
+      field: 'create_time',
     },
-    update_time: {
+    updateTime: {
       type: BIGINT,
       allowNull: false,
+      field: 'update_time',
     },
   });
 

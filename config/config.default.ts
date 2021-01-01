@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1608302381111_6826';
 
   // add your egg config in here
-  config.middleware = ['errorHandler'];
+  config.middleware = ['errorHandler', 'validate'];
 
   config.sequelize = {
     dialect: 'mysql',
@@ -32,8 +32,23 @@ export default (appInfo: EggAppInfo) => {
     mode: 'file',
   };
 
+  config.redis = {
+    client: {
+      port: 6379,
+      host: '127.0.0.1',
+      password: '',
+      db: 0,
+    },
+  };
+
   // the return config will combines to EggAppConfig
   return {
     ...config,
+    base: {
+      redis: {
+        expire: 60 * 60,
+        mode: 'EX',
+      },
+    },
   };
 };
