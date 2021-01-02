@@ -3,11 +3,13 @@
 
 import 'egg';
 import ExportBaseController from '../../../app/controller/BaseController';
-import ExportHome from '../../../app/controller/home';
+import ExportHome from '../../../app/controller/Home';
+import ExportLogin from '../../../app/controller/Login';
 
 declare module 'egg' {
   interface IController {
     baseController: ExportBaseController;
     home: ExportHome;
+    login: ExportLogin;
   }
 }

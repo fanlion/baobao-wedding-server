@@ -1,6 +1,6 @@
 import { Service } from 'egg';
 
-export default class PhotoService extends Service {
+export default class Photo extends Service {
   public async findBanner() {
     const { app } = this;
     const banner = await app.model.Banner.findAll();

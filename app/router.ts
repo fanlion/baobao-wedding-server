@@ -7,6 +7,10 @@ export default (app: Application) => {
   router.prefix(ROUTER_PREFIX);
 
   router.get('/', controller.home.index);
+
+  router.get('/login', controller.login.login);
+  router.get('/wxlogin', controller.login.wxLogin);
+
   router.get('/banner/list', controller.home.getBanner);
   router.get('/photo/gallery', controller.home.getGalerys);
 };

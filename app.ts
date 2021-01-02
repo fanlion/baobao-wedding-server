@@ -1,5 +1,9 @@
 import { Application } from 'egg';
+import * as dotenv from 'dotenv';
 import validator from './validator';
+
+// 配置.env环境变量
+dotenv.config();
 
 class AppBootHook {
   private app: Application;
