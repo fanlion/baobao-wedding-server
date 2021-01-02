@@ -2,7 +2,7 @@
  * @Author: fan.li
  * @Date: 2021-01-02 15:04:08
  * @Last Modified by: fan.li
- * @Last Modified time: 2021-01-02 15:12:56
+ * @Last Modified time: 2021-01-02 21:05:23
  *
  * 用户信息表
  */
@@ -19,36 +19,36 @@ export default function (app: Application) {
     },
     nickName: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
       field: 'nick_name',
     },
     avatarUrl: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
       field: 'avatar_url',
     },
     gender: {
       type: INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     sessionKey: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
       field: 'session_key',
     },
     openId: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
       field: 'open_id',
     },
     createTime: {
       type: BIGINT,
-      allowNull: false,
+      allowNull: true,
       field: 'create_time',
     },
     updateTime: {
       type: BIGINT,
-      allowNull: false,
+      allowNull: true,
       field: 'update_time',
     },
   });

@@ -3,7 +3,6 @@ import BaseController from './BaseController';
 export default class Login extends BaseController {
   public async login() {
     const { ctx } = this;
-    // const data = await ctx.servic
     ctx.body = this.success({
       data: {},
     });
@@ -11,10 +10,17 @@ export default class Login extends BaseController {
 
   public async wxLogin() {
     const { ctx } = this;
+    const { code, encryptedData, iv } = ctx.request.body;
 
-    // const data = await ctx.service.
+    ctx.validate({
+      code: 'string',
+      iv: 'string',
+      encryptedData: 'string',
+    });
+
+    const data = await ctx.service.login.wxLogin({ code, encryptedData, iv });
     ctx.body = this.success({
-      data: {},
+      data,
     });
   }
 }

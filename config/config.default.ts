@@ -41,14 +41,27 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  config.base = {
+    redis: {
+      expire: 60 * 60,
+      mode: 'EX',
+    },
+    wechatAuthUrl: 'https://api.weixin.qq.com/sns/jscode2session',
+    JWTScretKey: process.env.JWTScretKey,
+  };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
+  config.jwt = {
+    secret: process.env.JWTScretKey,
+  };
+
   // the return config will combines to EggAppConfig
   return {
     ...config,
-    base: {
-      redis: {
-        expire: 60 * 60,
-        mode: 'EX',
-      },
-    },
   };
 };
