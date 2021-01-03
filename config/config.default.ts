@@ -44,11 +44,18 @@ export default (appInfo: EggAppInfo) => {
   config.security = {
     csrf: {
       enable: false,
+      ignoreJSON: true,
+      domainWhiteList: ['http://localhost:7001'],
     },
   };
 
   config.jwt = {
     secret: '12345677',
+  };
+
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
   config.base = {
