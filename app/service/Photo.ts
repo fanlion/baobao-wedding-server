@@ -9,7 +9,7 @@ export default class Photo extends Service {
 
   public async findGalleryPhotos(id: number) {
     const { app } = this;
-    const photos = await app.model.Photo.findAll({ where: { gallery_id: id } });
+    const photos = await app.model.Photo.findAll({ where: { galleryId: id } });
     return photos;
   }
 

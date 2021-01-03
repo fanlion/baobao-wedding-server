@@ -6,9 +6,8 @@ export default function (options) {
 
     if (token) {
       try {
-        const decode = ctx.app.jwt.verify(token, options.JWTScretKey);
+        ctx.app.jwt.verify(token, options.secret);
         await next();
-        console.log('===========>decode', decode);
       } catch (e) {
         ctx.throw(200, ctx.responseStruc(ctx.errorMsg[ctx.errorCode.NO_AUTHORITY]));
       }

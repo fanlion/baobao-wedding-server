@@ -12,6 +12,10 @@ export default (app: Application) => {
   router.post('/login', controller.login.login);
   router.post('/wxlogin', controller.login.wxLogin);
 
-  router.get('/banner/list', jwt, controller.home.getBanner);
-  router.get('/photo/gallery', jwt, controller.home.getGalerys);
+  router.post('/photo/banner', jwt, controller.home.getBanner);
+  router.post('/photo/gallery', jwt, controller.home.getGalerys);
+  router.post('/photo/item', jwt, controller.home.getGalleryPhotos);
+
+  router.post('/comment/like', jwt, controller.like.addLike);
+  router.post('/comment/listLike', jwt, controller.like.listAllLike);
 };

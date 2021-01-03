@@ -2,9 +2,6 @@ import { Application } from 'egg';
 import * as dotenv from 'dotenv';
 import validator from './validator';
 
-// 配置.env环境变量
-dotenv.config();
-
 class AppBootHook {
   private app: Application;
 
@@ -14,6 +11,8 @@ class AppBootHook {
 
   // 配置文件即将加载
   configWillLoad() {
+    // 配置.env环境变量
+    dotenv.config();
     console.log('配置文件即将加载');
   }
 

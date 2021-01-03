@@ -18,9 +18,9 @@ export default class Login extends BaseController {
       encryptedData: 'string',
     });
 
-    const data = await ctx.service.login.wxLogin({ code, encryptedData, iv });
+    const token = await ctx.service.login.wxLogin({ code, encryptedData, iv });
     ctx.body = this.success({
-      data,
+      data: token,
     });
   }
 }

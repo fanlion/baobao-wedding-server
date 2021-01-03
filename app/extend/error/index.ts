@@ -2,7 +2,7 @@
  * @Author: fan.li
  * @Date: 2020-12-26 23:13:30
  * @Last Modified by: fan.li
- * @Last Modified time: 2021-01-01 22:03:21
+ * @Last Modified time: 2021-01-02 22:39:19
  *
  * 错误码定义
  */
@@ -23,6 +23,7 @@ enum ErrorCode {
   PARAMS_ERROR = 10004,
   NO_USER = 10005,
   PASSWORD_ERROR = 10006,
+  NOT_FOUND = 10007,
 }
 
 const ErrorMessage: ErrorCodeData = {
@@ -30,6 +31,7 @@ const ErrorMessage: ErrorCodeData = {
   [ErrorCode.ERROR]: { code: ErrorCode.ERROR, desc: 'error' },
   [ErrorCode.NO_AUTHORITY]: { code: ErrorCode.NO_AUTHORITY, desc: '未授权' },
   [ErrorCode.NO_TOKEN]: { code: ErrorCode.NO_TOKEN, desc: '未登录' },
+  [ErrorCode.NOT_FOUND]: { code: ErrorCode.NOT_FOUND, desc: '404 not found' },
 };
 
 export { ErrorMessage };

@@ -8,19 +8,25 @@ export default class HomeController extends BaseController {
 
   public async getBanner() {
     const { ctx } = this;
-    const data = await ctx.service.photoService.findBanner();
+    const data = await ctx.service.photo.findBanner();
     ctx.body = this.success({ data });
   }
 
   public async getGalerys() {
     const { ctx } = this;
-    const data = await ctx.service.photoService.fetchGalleryList();
+    const data = await ctx.service.photo.fetchGalleryList();
     ctx.body = this.success({ data });
   }
 
-  public async getGalleryPhotos(id: number) {
+  public async getGalleryPhotos() {
     const { ctx } = this;
-    const data = await ctx.service.photoService.findGalleryPhotos(id);
+    const { id } = ctx.request.body;
+
+    ctx.validate({
+      id: 'number',
+    });
+
+    const data = await ctx.service.photo.findGalleryPhotos(id);
     ctx.body = this.success({ data });
   }
 }

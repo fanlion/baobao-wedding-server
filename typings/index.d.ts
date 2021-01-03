@@ -2,18 +2,14 @@ import 'egg';
 
 declare module 'egg' {
   interface Application {
-    jwt: {
-      verify: (token: string, secret: string) => any;
-      sign: Function;
-    };
+    jwt: any;
   }
 }
 
-// declare const process: {
-//   env: {
-//     AppId: string;
-//     AppSecret: string;
-//     JWTScretKey: string;
-//     [key: string]: any;
-//   };
-// };
+declare const process: {
+  env: {
+    AppId: string;
+    AppSecret: string;
+    [key: string]: any;
+  };
+};

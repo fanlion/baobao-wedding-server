@@ -14,7 +14,19 @@ export default function () {
       let error: object | string = {};
 
       if (status === 500 && ctx.app.config.env === 'prod') {
-        error = 'Internal Server Error';
+        error = {
+          code: ctx.errorMsg[ctx.errorCode.ERROR].code,
+          desc: 'Internal Server Error',
+          data: null,
+        };
+      }
+
+      if (status === 404) {
+        error = {
+          code: ctx.errorMsg[ctx.errorCode.ERROR].code,
+          desc: ctx.errorMsg[ctx.errorCode.ERROR].desc,
+          data: null,
+        };
       }
 
       // 如果状态为200时为业务逻辑错误

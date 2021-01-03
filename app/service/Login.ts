@@ -11,7 +11,7 @@ export default class Login extends Service {
   public async login() {}
 
   public async wxLogin(params: WxLoginParams) {
-    const { ctx, config } = this;
+    const { ctx, config, app } = this;
     const wechatAuthUrl = config.base.wechatAuthUrl;
     const appid = process.env.AppId as string;
     const secret = process.env.AppSecret as string;
@@ -40,9 +40,8 @@ export default class Login extends Service {
     const userId = user.get('id') as number;
     const nickName = user.get('nickName') as string;
 
-    const token = ctx.app.jwt.sign(user.get('id'), config.base.JWTScretKey);
+    const token = ctx.app.jwt.sign(user.get('id'), app.config.jwt.secret);
     await ctx.app.redis.hset(token, { userId, nickName });
-
-    return { user, token };
+    return token;
   }
 }
